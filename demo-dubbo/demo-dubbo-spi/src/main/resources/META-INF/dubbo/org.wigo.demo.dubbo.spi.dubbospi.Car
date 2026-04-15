@@ -1,0 +1,2 @@
+red=org.wigo.demo.dubbo.spi.dubbospi.BlackCar
+org.wigo.demo.dubbo.spi.dubbospi.CarWrapper

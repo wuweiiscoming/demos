@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    按照本模版配置可达到以下效果：
+    1、生成操作日志、系统日志和追踪日志文件,文件路径、文件名和日志格式符合日志规范
+    2、系统日志除ERROR以上日志打印两次外，其余均只打印一次，节约磁盘I/O
+    3、支持使用日志级别修改工具一键修改级别，不需重启即可生效
+-->
+<!-- scan="true", 不要修改。设为true支持动态调整打印级别（不需重启程序）,已提供工具统一改级别，若设false则无效 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!-- 控制台Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %level ${COMPONENT_ID}.${SEGMENT_ID} [%thread] [%logger{50}:%line]
+                %msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="com.hikvision.ebg.start.ApplyApplication" level="ERROR"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <!-- 系统日志文件打印配置  结束 -->
+</configuration>
