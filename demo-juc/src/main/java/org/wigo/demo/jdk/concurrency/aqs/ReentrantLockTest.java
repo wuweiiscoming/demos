@@ -12,6 +12,7 @@ public class ReentrantLockTest {
         Thread thread1 = new Thread(() -> {
             lock.lock();
             try {
+                Thread.sleep(1000);
                 System.out.println("await");
                 condition.await();
             } catch (InterruptedException e) {
@@ -21,7 +22,9 @@ public class ReentrantLockTest {
             }
         });
         Thread thread2 = new Thread(() -> {
+            System.out.println(System.currentTimeMillis());
             lock.lock();
+            System.out.println(System.currentTimeMillis());
             try {
                 System.out.println("睡眠1s");
                 Thread.sleep(1000);

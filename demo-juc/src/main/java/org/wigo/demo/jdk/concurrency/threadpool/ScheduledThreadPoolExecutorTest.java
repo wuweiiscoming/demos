@@ -2,6 +2,7 @@ package org.wigo.demo.jdk.concurrency.threadpool;
 
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -12,14 +13,19 @@ import java.util.concurrent.TimeUnit;
  */
 public class ScheduledThreadPoolExecutorTest {
 
-
     @Test
     public void scheduleAtFixedRate() throws InterruptedException {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
         scheduledExecutorService.scheduleAtFixedRate(()->{
-            System.out.println("执行任务");
-        },1,1, TimeUnit.SECONDS);
+            try {
+                System.out.println("执行任务开始："+ LocalDateTime.now());
+                Thread.sleep(2000);
+                System.out.println("执行任务结束："+ LocalDateTime.now());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        },0,1, TimeUnit.SECONDS);
 
         Thread.sleep(Integer.MAX_VALUE);
     }

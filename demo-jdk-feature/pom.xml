@@ -13,9 +13,10 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>demo-jdk-jdk25</module>
+        <module>demo-jdk-jdk21</module>
+        <module>demo-jdk-jdk17</module>
         <module>demo-jdk-jdk11</module>
-        <module>demo-jdk-jdk10</module>
-        <module>demo-jdk-jdk9</module>
         <module>demo-jdk-jdk8</module>
         <module>demo-jdk-jdk7blew</module>
     </modules>
